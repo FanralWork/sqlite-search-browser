@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv/
+.idea/
+.vscode/
+
+/browser_settings.json
+/db/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+
+# Local database backups and runtime files
+venv/
+.pytest_cache/
+.env
+.env.*
+*.db3
+*.db3-*
+*.backup
+*.log
