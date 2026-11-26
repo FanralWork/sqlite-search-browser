@@ -1,31 +1,27 @@
-# SQLite Search Browser
+# Обозреватель SQLite
 
-A Tkinter desktop prototype for searching local SQLite databases and inspecting matching rows.
+Настольный прототип на Tkinter ищет данные в локальных базах SQLite и показывает найденные строки.
 
-## Features
+## Возможности
 
-- Scans a selected directory for `.db`, `.sqlite`, and `.sqlite3` files.
-- Searches the selected database scope or all listed databases.
-- Displays tables and matching records and saves search preferences in `browser_settings.json`.
+- Сканирует выбранную папку на наличие файлов `.db`, `.sqlite` и `.sqlite3`.
+- Ищет в выбранной области или по всем добавленным базам.
+- Показывает таблицы и содержимое строк. Сохраняет настройки поиска в `browser_settings.json`.
 
-## Stack and architecture
+## Устройство
 
-`sqlite_search.py` contains the Tkinter interface and its SQLite access. The app enumerates tables and columns, searches them with the standard-library `sqlite3` module, and renders row details in Tkinter views.
+Файл `sqlite_search.py` содержит интерфейс и обращения к SQLite. Программа обходит таблицы и их столбцы через стандартный модуль `sqlite3`, затем показывает результаты в окнах Tkinter.
 
-## Setup and usage
+## Запуск
 
-Use Python with Tkinter installed. The app has no third-party Python packages.
+Установите Python с Tkinter. Для запуска достаточно стандартной библиотеки:
 
 ```sh
 python sqlite_search.py
 ```
 
-On the database tab, select a folder of disposable test databases. On the search tab, enter one or more space-separated terms, choose exact or partial matching, and run the search. Double-click a result to inspect its stored row details. The interface is in Russian.
+На вкладке добавления баз укажите папку с копиями тестовых файлов. На вкладке поиска введите один или несколько терминов через пробел, выберите полный или частичный поиск и запустите его. Двойной щелчок по результату открывает данные найденной строки.
 
-## Status and limitations
+## Ограничения
 
-This prototype can write changes to SQLite. Use copies of test databases. Inline edits assume that the first column uniquely identifies a row. Several row or column management controls are placeholders and may display a success dialog. Searches run on the UI thread and rely on SQLite `ROWID` and identifier handling that can skip some schemas. Partial search follows SQLite's `LIKE` behavior. The settings file stores local database paths.
-
-## Кратко для портфолио
-
-Прототип настольного обозревателя нескольких локальных баз SQLite с поиском по таблицам и просмотром найденных строк. Редактирование требует доработки.
+Прототип может записывать изменения в SQLite. Проверяйте редактирование на копии базы. Обработчик редактирования считает первый столбец уникальным идентификатором строки. Некоторые кнопки управления строками и столбцами показывают диалог без изменения данных. Поиск зависит от `ROWID` и обработки имён таблиц, поэтому часть схем может быть пропущена. Длительный запрос может задержать интерфейс. В файле настроек сохраняются локальные пути к базам.
